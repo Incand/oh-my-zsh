@@ -82,6 +82,9 @@ HISTSIZE=100000
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git git-extras dirhistory zsh-navigation-tools colored-man-pages zsh-autosuggestions)
 
+# Fix pacman autocomplete after install on same shell
+zstyle ':completion:*' rehash true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
