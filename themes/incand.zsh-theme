@@ -1,25 +1,26 @@
 # kphoen.zsh-theme
 
 if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
-    PROMPT='%B%{$FG[118]%}%n@%m %{$FG[141]%}%~%{$reset_color%}$(git_prompt_info)
-%B%{$FG[141]%}$%{$reset_color%} '
+    PROMPT='%B%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)$(git_prompt_status)
+%{$fg[green]%}%B$%{$reset_color%} '
 
-    ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+    ZSH_THEME_GIT_PROMPT_PREFIX=" on %B%{$fg[cyan]%}"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-    ZSH_THEME_GIT_PROMPT_DIRTY=""
-    ZSH_THEME_GIT_PROMPT_CLEAN=""
+    ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}! "
+    ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}- "
+
+    ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}A"
+    ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%}M"
+    ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}D"
+    ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%}R"
+    ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%}═"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%}T"
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-    RPROMPT='${return_code}$(git_prompt_status)%{$reset_color%}'
+   # RPROMPT='${return_code}$(git_prompt_status)%{$reset_color%}'
 
-    ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} ✚"
-    ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} ✹"
-    ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} ✖"
-    ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
-    ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 else
     PROMPT='[%n@%m:%~$(git_prompt_info)]
 %# '
